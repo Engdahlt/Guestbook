@@ -23,6 +23,12 @@
       "epost": "cool@mail.se",
       "amne": "hej",
       "inlagg": "Cool hemsida du har gjort"
+    },
+    {
+      "namn": "Tobias",
+      "epost": "Engdahl@epost.com",
+      "amne": "test",
+      "inlagg": "tewst"
     }
-      ]
+  ]
 }
