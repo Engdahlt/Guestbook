@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tobias gästbok</title>
-    <script src="javascript/klientskript.js"></script>
+    <title>Tobias Gästbok</title>
+    <script src="/javascript/klientskript.js"></script>
 </head>
-<body>
-    <form action="/guestbook" method="post">
-        <input type="text" placeholder="Namn" name="namn"><br>
-        <input type="text" placeholder="E-postadress" name="epost"><br>
-        <input type="text" placeholder="Ämne" name="amne"><br>
-        <textarea name="inlagg" placeholder="Skriv ditt inlägg här."></textarea><br>
-        <input type="submit" value="Skicka inlägg">
-      </form>
+<style>
+    table {
+        border: 1px solid grey;
+    }
 
-      <p id= "output"></p>
+    th,
+    td {
+        border: 1px solid grey;
+        align-content: center;
+    }
+</style>
+
+<body>
+    <form action="/messages" method="post">
+        <input type="text" placeholder="Namn" name="gastboksinlagg[namn]"><br>
+        <input type="text" placeholder="E-postadress" name="gastboksinlagg[epost]"><br>
+        <input type="text" placeholder="Ämne" name="gastboksinlagg[amne]"><br>
+        <textarea name="gastboksinlagg[inlagg]" placeholder="Skriv ditt inlägg här."></textarea><br>
+        <input type="submit" value="Skicka inlägg">
+    </form>
+    <div>
+        <h1>Tidigare gästboksinlägg</h1>
+        <table id="output">
+            <th>Namn</th>
+            <th>Epost</th>
+            <th>Ämne</th>
+            <th>Meddelande</th>
+            <tr></tr>
+        </table>
+    </div>
+
 </body>
+
 </html>
