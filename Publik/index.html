@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tobias gästbok</title>
+    <script src="javascript/klientskript.js"></script>
+</head>
+<body>
+    <form action="/guestbook" method="post">
+        <input type="text" placeholder="Namn" name="namn"><br>
+        <input type="text" placeholder="E-postadress" name="epost"><br>
+        <input type="text" placeholder="Ämne" name="amne"><br>
+        <textarea name="inlagg" placeholder="Skriv ditt inlägg här."></textarea><br>
+        <input type="submit" value="Skicka inlägg">
+      </form>
+
+      <p id= "output"></p>
+</body>
+</html>

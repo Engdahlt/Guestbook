@@ -1,0 +1,17 @@
+{
+  "gastboksinlagg": [
+    {},
+    {
+      "namn": "a",
+      "epost": "b",
+      "amne": "c",
+      "inlagg": "d"
+    },
+    {
+      "namn": "a",
+      "epost": "d",
+      "amne": "e",
+      "inlagg": "d"
+    }
+  ]
+}
