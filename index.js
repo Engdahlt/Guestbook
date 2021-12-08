@@ -1,5 +1,4 @@
 //Skapat början av mitt serverskript
-
 const { json } = require("express");
 const express = require("express");
 const app = express();
@@ -13,34 +12,34 @@ console.log("Kör servern på localhost:3000");
 console.log(__dirname)
 
 app.get("/guestbook", (req, res) => {
-    res.sendFile(__dirname + '/publik/index.html')
+    res.sendFile(__dirname + '/Publik/index.html')
 });
-app.post("/guestbook", (req, res) => {
+app.post("/messages", async (req, res) => {
+  const newMessage = req.body.activity
+  await fs.readFile('./gastbok.json', 'utf8', async (err, data) => {
+      
+      if (err) {
+        console.log('File read failed:', err);
+        return;
+      }
 
-  let namnInput = {
-        namn: req.body.namn,
-        epost: req.body.epost,
-        amne: req.body.amne,
-        inlagg: req.body.inlagg
-      };
-    
-fs.readFile('./gastbok.json', 'utf8', (err, minJson) => {
-        
-        if (err) {
-          console.log('Error när fil läses in:', err);
-          return;
-        }
+      const Messages = JSON.parse(data)
+      Messages.gastboksinlagg.push(newMessage)
+     
+      await fs.writeFileSync('./gastbok.json', JSON.stringify(Messages, null, 2))
 
-      const inlaggsInput = JSON.parse(minJson)
-      inlaggsInput.gastboksinlagg.push(namnInput)
-       
-      fs.writeFileSync('./gastbok.json', JSON.stringify(inlaggsInput, null, 2), (err) => {
-        if (err) throw err;
-      });
+      res.sendFile(__dirname + '/Publik/index.html')
+    });    
+});
+app.get("/messages", async (req, res) => {
+  await fs.readFile('gastbok.json', 'utf8', (err, data) => {
+      if (err) {
+        console.log('File read failed:', err);
+        return;
+      }
+      res.send(data)
+    });    
+  })
 
-        res.sendFile(__dirname + '/publik/index.html')
-      });    
-
-    });
-
-
+  
+/
